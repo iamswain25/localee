@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <UpperMenu/>
+    <v-content>
+      <BaseMap/>
+    </v-content>
+    <SearchBottom/>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import BaseMap from "./components/BaseMap";
+import UpperMenu from "./components/UpperMenu";
+import SearchBottom from "./components/SearchBottom";
 export default {
-  name: 'app',
+  name: "App",
   components: {
-    HelloWorld
+    BaseMap,
+    UpperMenu,
+    SearchBottom
+  },
+  data() {
+    return {
+      //
+    };
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

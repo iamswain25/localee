@@ -1,9 +1,9 @@
 <template>
   <section :class="isSearchBoxUp ? `searchtop` : `searchbottom` ">
-    <div class="line" @click="searchBoxUp"/>
+    <div class="line" @click="searchBoxToggle"/>
     <div class="box">
       <span style="padding: 0 5px;">#</span>
-      <input class="input" type="text" v-model="searchKey">
+      <input class="input" type="text" v-model="searchKey" @focus="searchBoxUp">
       <!-- <span v-show="searchKey.length"></span> -->
       <v-icon large v-show="searchKey.length" @click="clearSerchKey">clear</v-icon>
     </div>
@@ -23,35 +23,41 @@
         <li>로고</li>
       </ul>
       <div>토픽 더 보기</div>
-      <div class="button">토픽쓰기</div>
+      <div class="button" @click="writeTopic">토픽쓰기</div>
     </article>
     <!-- </transition> -->
   </section>
 </template>
 <script>
+const geocoder = new window.daum.maps.services.Geocoder();
 export default {
+  props: [
+    "isSearchBoxUp",
+    "searchBoxUp",
+    "searchBoxToggle",
+    "setAlertMessage",
+    "setWriteMode"
+  ],
   data() {
     return {
-      searchKey: "",
-      isSearchBoxUp: false
+      searchKey: ""
     };
   },
   methods: {
-    searchBoxUp(e) {
-      console.log(e);
-      this.isSearchBoxUp = !this.isSearchBoxUp;
-    },
     clearSerchKey() {
       this.searchKey = "";
-    }
-  },
-  watch: {
-    searchKey(oldValue, newValue) {
-      if (newValue.length) {
-        this.isSearchBoxUp = true;
-      }
+    },
+    writeTopic() {
+      this.setWriteMode(true);
     }
   }
+  // watch: {
+  //   searchKey(oldValue, newValue) {
+  //     if (newValue.length) {
+  //       this.isSearchBoxUp = true;
+  //     }
+  //   }
+  // }
 };
 </script>
 

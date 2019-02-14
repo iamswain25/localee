@@ -5,15 +5,20 @@
         <v-icon large>menu</v-icon>
       </div>
     </div>
+    <div v-show="isSearchBoxUp">
+      <div class="area">{{myArea}}</div>
+    </div>
     <div class="box">
-      <v-icon>near_me</v-icon>
+      <v-icon @click="flyToCurrentLocation">near_me</v-icon>
       <div class="line"/>
-      <div class="hash">#</div>
+      <div class="hash" @click="searchBoxUp">#</div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: ["isSearchBoxUp", "searchBoxUp", "flyToCurrentLocation", "myArea"]
+};
 </script>
 <style scoped>
 .uppermenu {
@@ -35,5 +40,11 @@ export default {};
 }
 .hash {
   font-size: 20px;
+}
+.area {
+  font-size: 15px;
+  padding: 10px;
+  line-height: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 </style>

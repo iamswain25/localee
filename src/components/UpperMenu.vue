@@ -1,6 +1,10 @@
 <template>
   <div class="uppermenu">
-    <v-icon large="">menu</v-icon>
+    <div>
+      <div style="background-color: rgba(255,255,255,0.8);">
+        <v-icon large>menu</v-icon>
+      </div>
+    </div>
     <div class="box">
       <v-icon>near_me</v-icon>
       <div class="line"/>
@@ -23,6 +27,7 @@ export default {};
 .box {
   border: 1px solid black;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 .line {
   border-top: 2px solid black;
